@@ -11,17 +11,27 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.ixuea.courses.mymusic.R;
+import com.ixuea.courses.mymusic.activity.BaseLogicActivity;
 import com.ixuea.courses.mymusic.util.SuperDarkUtil;
 import com.ixuea.courses.mymusic.util.SuperDateUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
-public class SplashActivity extends AppCompatActivity {
+/**
+ * 启动界面
+ */
+public class SplashActivity extends BaseLogicActivity {
+
+    private TextView copyrightView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+    }
 
+    @Override
+    protected void initViews() {
+        super.initViews();
         // 设置沉浸式状态栏
         QMUIStatusBarHelper.translucent(this);
 
@@ -32,9 +42,14 @@ public class SplashActivity extends AppCompatActivity {
             QMUIStatusBarHelper.setStatusBarLightMode(this);
         }
 
+        copyrightView = findViewById(R.id.copyright);
+    }
+
+    @Override
+    protected void initDatum() {
+        super.initDatum();
         // 设置版本年份
         int year = SuperDateUtil.currentYear();
-        TextView copyrightView = findViewById(R.id.copyright);
         copyrightView.setText(getResources().getString(R.string.copyright, year));
     }
 }
