@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.ixuea.courses.mymusic.R;
+import com.ixuea.courses.mymusic.util.SuperDarkUtil;
 import com.ixuea.courses.mymusic.util.SuperDateUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
@@ -25,7 +26,11 @@ public class SplashActivity extends AppCompatActivity {
         QMUIStatusBarHelper.translucent(this);
 
         // 状态栏文字颜色
-        QMUIStatusBarHelper.setStatusBarLightMode(this);
+        if (SuperDarkUtil.isDark(this)) {
+            QMUIStatusBarHelper.setStatusBarDarkMode(this);
+        } else {
+            QMUIStatusBarHelper.setStatusBarLightMode(this);
+        }
 
         // 设置版本年份
         int year = SuperDateUtil.currentYear();

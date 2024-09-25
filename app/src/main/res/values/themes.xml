@@ -5,6 +5,8 @@
         白天：灰色
         夜间：深黑-->
     <style name="SuperUI.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!--背景色-->
+        <item name="android:colorBackground">@color/black183</item>
     </style>
     <!--endregion-->
 </resources>
