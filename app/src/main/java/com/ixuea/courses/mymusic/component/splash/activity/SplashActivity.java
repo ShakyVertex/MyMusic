@@ -1,6 +1,7 @@
 package com.ixuea.courses.mymusic.component.splash.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
  */
 public class SplashActivity extends BaseLogicActivity {
 
+    private static final String TAG = "SplashActivity";
     private TextView copyrightView;
 
     @Override
@@ -62,9 +64,13 @@ public class SplashActivity extends BaseLogicActivity {
     private void showTermsServiceAgreementDialog() {
         TermServiceDialogFragment.show(getSupportFragmentManager(), new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // TODO
+            public void onClick(View v) {
+                prepareNext();
             }
         });
+    }
+
+    private void prepareNext() {
+        Log.d(TAG, "prepareNext");
     }
 }

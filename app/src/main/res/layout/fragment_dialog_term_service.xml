@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/padding_large"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="?android:attr/colorBackground">
 
     <!--标题-->
     <TextView
@@ -29,4 +31,24 @@
             android:layout_height="wrap_content"/>
     </ScrollView>
 
+    <!--Accept Button-->
+    <com.google.android.material.button.MaterialButton
+        android:text="@string/agree"
+        android:id="@+id/primary"
+        android:layout_marginTop="@dimen/padding_large"
+        app:cornerRadius="@dimen/d27_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!--Reject Button-->
+    <Button
+        android:id="@+id/disagree"
+        android:textSize="@dimen/text_small"
+        android:layout_marginTop="@dimen/padding_meddle"
+        android:background="@color/transparent"
+        android:textColor="@color/black80"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="@string/disagree"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"/>
 </LinearLayout>
