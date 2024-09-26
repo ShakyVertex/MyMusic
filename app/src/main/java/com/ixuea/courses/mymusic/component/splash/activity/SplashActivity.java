@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.ixuea.courses.mymusic.R;
 import com.ixuea.courses.mymusic.activity.BaseLogicActivity;
 import com.ixuea.courses.mymusic.component.splash.fragment.TermServiceDialogFragment;
+import com.ixuea.courses.mymusic.util.DefaultPreferenceUtil;
 import com.ixuea.courses.mymusic.util.SuperDarkUtil;
 import com.ixuea.courses.mymusic.util.SuperDateUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
@@ -55,7 +56,12 @@ public class SplashActivity extends BaseLogicActivity {
         int year = SuperDateUtil.currentYear();
         copyrightView.setText(getResources().getString(R.string.copyright, year));
 
-        showTermsServiceAgreementDialog();
+        if (DefaultPreferenceUtil.getInstance(getHostActivity()).isAcceptTermsServiceAgreement()) {
+            // 已经同意了用户协议
+            prepareNext();
+        } else {
+            showTermsServiceAgreementDialog();
+        }
     }
 
     /**
@@ -65,6 +71,7 @@ public class SplashActivity extends BaseLogicActivity {
         TermServiceDialogFragment.show(getSupportFragmentManager(), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DefaultPreferenceUtil.getInstance(getHostActivity()).setAcceptTermsServiceAgreement();
                 prepareNext();
             }
         });
