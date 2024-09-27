@@ -9,3 +9,8 @@
 ## 任务日志
 
 2024.9.25 出了BUG，不知道怎么调试，反正就是莫名的app出现故障，View无法正常跳转，fragment里的HTML替代也出现了问题，md每次我都很烦讲课的老师
+
+## 自圆其说
+
+* viewBinding如何替代findViewById来完成视图绑定的，以前是在AppCompatActivity的子类里调用findViewById来将view绑定到java对象上；在项目中开启viewBinding之后，每一个layout文件会自动的生成一个ActivityBinding类，我们可以通过把这个类传入Activity的泛型当中，并且在构造器中动态的生成binding来完成自动视图绑定；
+* // TODO

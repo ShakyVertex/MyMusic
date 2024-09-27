@@ -16,7 +16,8 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.button.MaterialButton;
 import com.ixuea.courses.mymusic.R;
-import com.ixuea.courses.mymusic.fragment.BaseDialogFragment;
+import com.ixuea.courses.mymusic.databinding.FragmentDialogTermServiceBinding;
+import com.ixuea.courses.mymusic.fragment.BaseViewModelDialogFragment;
 import com.ixuea.courses.mymusic.util.ScreenUtil;
 import com.ixuea.courses.mymusic.util.SuperTextUtil;
 import com.ixuea.superui.process.SuperProcessUtil;
@@ -24,12 +25,9 @@ import com.ixuea.superui.process.SuperProcessUtil;
 /**
  * 服务条款和隐私协议对话框
  */
-public class TermServiceDialogFragment extends BaseDialogFragment {
+public class TermServiceDialogFragment extends BaseViewModelDialogFragment<FragmentDialogTermServiceBinding> {
 
     private static final String TAG = "TermServiceDialogFragment";
-    private TextView contentView;
-    private MaterialButton primaryView;
-    private Button disagreeView;
     private View.OnClickListener onAgreementClickListener;
 
     @Override
@@ -38,11 +36,7 @@ public class TermServiceDialogFragment extends BaseDialogFragment {
 
         setCancelable(false);
 
-        contentView = findViewById(R.id.content);
-        primaryView = findViewById(R.id.primary);
-        disagreeView = findViewById(R.id.disagree);
-
-        SuperTextUtil.setLinkColor(contentView, getActivity().getColor(R.color.link));
+        SuperTextUtil.setLinkColor(binding.content, getActivity().getColor(R.color.link));
     }
 
     @Override
@@ -55,13 +49,13 @@ public class TermServiceDialogFragment extends BaseDialogFragment {
                 Log.d(TAG, "onLinkClick: " + data);
             }
         });
-        contentView.setText(result);
+        binding.content.setText(result);
     }
 
     @Override
     protected void initListeners() {
         super.initListeners();
-        primaryView.setOnClickListener(new View.OnClickListener() {
+        binding.primary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismiss();
@@ -69,7 +63,7 @@ public class TermServiceDialogFragment extends BaseDialogFragment {
             }
         });
 
-        disagreeView.setOnClickListener(new View.OnClickListener() {
+        binding.disagree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismiss();

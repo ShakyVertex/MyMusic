@@ -16,7 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.ixuea.courses.mymusic.R;
 import com.ixuea.courses.mymusic.activity.BaseLogicActivity;
+import com.ixuea.courses.mymusic.activity.BaseViewModelActivity;
 import com.ixuea.courses.mymusic.component.splash.fragment.TermServiceDialogFragment;
+import com.ixuea.courses.mymusic.databinding.ActivitySplashBinding;
 import com.ixuea.courses.mymusic.util.DefaultPreferenceUtil;
 import com.ixuea.courses.mymusic.util.SuperDarkUtil;
 import com.ixuea.courses.mymusic.util.SuperDateUtil;
@@ -33,16 +35,9 @@ import permissions.dispatcher.RuntimePermissions;
  * 启动界面
  */
 @RuntimePermissions
-public class SplashActivity extends BaseLogicActivity {
+public class SplashActivity extends BaseViewModelActivity<ActivitySplashBinding> {
 
     private static final String TAG = "SplashActivity";
-    private TextView copyrightView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-    }
 
     @Override
     protected void initViews() {
@@ -56,8 +51,6 @@ public class SplashActivity extends BaseLogicActivity {
         } else {
             QMUIStatusBarHelper.setStatusBarLightMode(this);
         }
-
-        copyrightView = findViewById(R.id.copyright);
     }
 
     @Override
@@ -65,7 +58,7 @@ public class SplashActivity extends BaseLogicActivity {
         super.initDatum();
         // 设置版本年份
         int year = SuperDateUtil.currentYear();
-        copyrightView.setText(getResources().getString(R.string.copyright, year));
+        binding.copyright.setText(getResources().getString(R.string.copyright, year));
 
         if (DefaultPreferenceUtil.getInstance(getHostActivity()).isAcceptTermsServiceAgreement()) {
             // 已经同意了用户协议
