@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MyCloudMusicAndroidJava"
 include ':app'
+include ':super-j'
