@@ -38,6 +38,10 @@ dependencies {
     // UI框架，主要是用他的工具类，也可以单独拷贝出来
     // https://qmuiteam.com/android/get-started
     implementation libs.qmuiteam
+    // 动态处理权限
+    // https://github.com/permissions-dispatcher/PermissionsDispatcher
+    implementation libs.permissionsdispatcher
+    annotationProcessor libs.permissionsdispatcher.processor
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
