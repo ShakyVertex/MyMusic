@@ -2,6 +2,7 @@ package com.ixuea.courses.mymusic.component.splash.activity;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.ixuea.courses.mymusic.R;
 import com.ixuea.courses.mymusic.activity.BaseLogicActivity;
 import com.ixuea.courses.mymusic.activity.BaseViewModelActivity;
+import com.ixuea.courses.mymusic.component.guide.activity.GuideActivity;
 import com.ixuea.courses.mymusic.component.splash.fragment.TermServiceDialogFragment;
 import com.ixuea.courses.mymusic.databinding.ActivitySplashBinding;
 import com.ixuea.courses.mymusic.util.DefaultPreferenceUtil;
@@ -83,6 +85,10 @@ public class SplashActivity extends BaseViewModelActivity<ActivitySplashBinding>
 
     private void prepareNext() {
         Log.d(TAG, "prepareNext");
+        Intent intent = new Intent(this, GuideActivity.class);
+        startActivity(intent);
+        // 在启动引导界面之后，无法再次回到Splash界面
+        finish();
     }
 
     /**
